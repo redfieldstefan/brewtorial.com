@@ -1,0 +1,9 @@
+.createBrewSteps {
+	padding: 0 8em 0 2em;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.createBrewSteps li:hover {
+	cursor: pointer;
+}

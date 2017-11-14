@@ -1,0 +1,28 @@
+.prevNextContainer {
+	width: 100%;
+	position: relative;
+}
+
+.prevNext {
+	color: tomato;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	font-size: 1em;
+	position: absolute;
+}
+
+.prevNext:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.prev {
+	bottom: 25px;
+	left: 50px;
+}
+
+.next, .done {
+	bottom: 25px;
+	right: 50px;
+}

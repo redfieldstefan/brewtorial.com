@@ -1,0 +1,36 @@
+.item {
+	display: flex;
+	flex-flow: row;
+}
+
+.item:hover {
+	color: red;
+	cursor: pointer;
+}
+
+.item:hover > .clear {
+	color: red;
+	font-weight: bold;
+}
+
+.text {
+	margin: 0;
+}
+
+.name {
+	
+}
+
+.quantity {
+	
+}
+
+.clear {
+	background-color: transparent;
+	outline: none;
+	border: none;
+}
+
+.clear:hover {
+	cursor: pointer;
+}

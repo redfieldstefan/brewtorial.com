@@ -1,0 +1,39 @@
+.createBrewBody {
+	width: 60%;
+	float: left;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.createBrewStep form {
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+}
+
+.createBrewInput {
+	width: 100%;
+	margin-bottom: 3em;
+}
+
+.createBrewTextArea {
+	width: 100%;
+	height: 200px;
+}
+
+.ingredientsList {
+	padding-top: 25px;
+}
+
+.ingredientsList li {
+	float: left;
+	padding-right: 10px;
+}
+
+.prevNext {
+	position: absolute;
+	bottom: 0;
+}

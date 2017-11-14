@@ -1,0 +1,39 @@
+.nav {
+	display: flex;
+	padding: 1em;
+	align-items: baseline;
+	position: fixed;
+	width: 100%;
+}
+
+.logo {
+	height: 50px;
+	margin-left: 25px;
+}
+
+.navMain {
+	color: black;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	font-weight: 300;
+}
+
+.list {
+	display: flex;
+	flex-flow: row;
+	color: #49627F;
+	padding-left: 1em;
+}
+
+.list li {
+	padding-right: 10px;
+}
+
+.signIn {
+	margin-left: auto;
+	margin-right: 3em;
+}
+
+.signIn a {
+	color: white;
+}
