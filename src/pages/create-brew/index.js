@@ -132,8 +132,8 @@ class CreateBrew extends Component {
 		});
 	}
 
-	renderList(currentStep) {
-		const {recipe} = this.state;
+	renderList() {
+		const {currentStep, recipe} = this.state;
 
 		if(currentStep === 0) {
 			return null
@@ -256,7 +256,7 @@ class CreateBrew extends Component {
 							</form>
 						}
 						{
-							this.renderList(currentStep)
+							this.renderList()
 						}
 					</div>
 
