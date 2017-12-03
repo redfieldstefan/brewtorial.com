@@ -8,27 +8,26 @@
 }
 
 .createBrewStep {
-	width: 100%;
 	display: flex;
 	flex-direction: row;
+}
+
+.step-0 {
+	width: 100%;
+}
+
+.step-1, .step-2, .step-3 {
+	flex: 60%;
+}
+
+.ingredientsList {
+	flex: 40% 0 0;
 }
 
 .formContainer {
 	height: 100vh;
 	display: flex;
 	align-items: center;
-}
-
-.fullWidth {
-	width: 100%;
-}
-
-.twoThirds {
-	width: 60%;
-}
-
-.halfWidth {
-	width: 50%;
 }
 
 .createBrewStep form {
@@ -45,10 +44,6 @@
 .createBrewTextArea {
 	width: 100%;
 	height: 200px;
-}
-
-.ingredientsList {
-	flex: 40%;
 }
 
 .prevNext {

@@ -20,7 +20,7 @@ class CreateBrew extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentStep: 3,
+			currentStep: 0,
 			currentInput: {},
 			basic: {},
 			recipe: {
@@ -36,6 +36,7 @@ class CreateBrew extends Component {
 		this.changeStep = this.changeStep.bind(this);
 		this.remove = this.remove.bind(this);
 		this.updateCurrent = this.updateCurrent.bind(this);
+		this.renderList = this.renderList.bind(this);
 	}
 
 	changeStep(index) { 
@@ -131,6 +132,50 @@ class CreateBrew extends Component {
 		});
 	}
 
+	renderList(currentStep) {
+		const {recipe} = this.state;
+
+		if(currentStep === 0) {
+			return null
+		} else if (currentStep === 3) {
+			return (
+				<List className={styles.ingredientsList} placeholder="Add each step, and the time it takes. Rome was built in 1 day, for example">
+					{recipe.steps.map((step, i) => (
+						<li className={styles.stepsListLiContainer} index={i} onClick={() => this.remove(i, "steps")}>
+							<p className={styles.stepsListLi}>
+								{
+									`Step ${i + 1} - ${step.instructions}` 
+								}
+							</p>
+						</li>
+					))}
+				</List>
+			);
+		} else if (currentStep === 1) {
+			return (
+				<List 
+					className={styles.ingredientsList} 
+					placeholder="Arguably ingredients give the brew flavor, you should add some."
+				>
+					{recipe.ingredients.map((listItem, i) => (
+						<IngredientLi ingredient={listItem} index={i} onClick={() => this.remove(i, "ingredients")}/>
+					))}
+				</List>
+			)
+		} else if (currentStep === 2) {
+			return (
+				<List 
+					className={styles.ingredientsList} 
+					placeholder="Add all the equipment you'll need"
+				>
+					{recipe.equipment.map((listItem, i) => (
+						<EquipmentLi item={listItem} index={i} onClick={() => this.remove(i, "equipment")}/>
+					))}
+				</List>
+			)
+		}
+	}
+
 	render() {
 
 		const {
@@ -145,111 +190,75 @@ class CreateBrew extends Component {
 				<Nav />
 
 				<div className={styles.createBrewBody} >
-					{	
-						currentStep === 0 &&
-						<div className={styles.createBrewStep}>
-							<span className={classnames(styles.formContainer, styles.fullWidth)}>
-								<form>
-									<TextInput 
-										onChange={(name) => this.updateBasic({name})}  
-										className={styles.createBrewInput} 
-										placeholder="Name"
-										value={basic.name}
-									/>
-									<TextInput 
-										onChange={(style) => this.updateBasic({style})} 
-										className={styles.createBrewInput} 
-										placeholder="Style"
-										value={basic.style}
-									/>
-									<TextArea 
-										onChange={(description) => this.updateBasic({description})} 
-										className={styles.createBrewTextArea} 
-										placeholder="Description"
-										value={basic.description}
-									/>
-								</form>
-							</span>
-						</div>
-					}
-					{	
-						currentStep === 1 &&
-						<div className={styles.createBrewStep}>
-							<span className={classnames(styles.formContainer, styles.twoThirds)}>
-								<form onSubmit={this.addIngredient}>
-									<TextInput 
-										onChange={(name) => this.updateCurrent({name})}  
-										className={styles.createBrewInput} placeholder="Ingredient"
-										value={currentInput.name}
-									/>
-									<TextInput 
-										onChange={(quantity) => this.updateCurrent({quantity})} 
-										className={styles.createBrewInput} placeholder="Quantity"
-										value={currentInput.quantity}
-									/>
-									<button>Add</button>
-								</form>
-							</span>
-
-							<List 
-								className={styles.ingredientsList} 
-								placeholder="Arguably ingredients give the brew flavor, you should add some."
-							>
-								{recipe.ingredients.map((ingredient, i) => (
-									<IngredientLi ingredient={ingredient} index={i} onClick={() => this.remove(i, "ingredients")}/>
-								))}
-							</List>
-						</div>
-					}
-					{	
-						currentStep === 2 &&
-						<div className={styles.createBrewStep}>
-							<span className={classnames(styles.formContainer, styles.twoThirds)}>
-								<form onSubmit={this.addEquipment}>
-									<TextInput 
-										onChange={(equipment) => this.updateCurrent({equipment})}  
-										className={styles.createBrewInput} placeholder="Item Name"
-										value={currentInput.equipment}
-									/>
-									<button>Add</button>
-								</form>
-							</span>
-							<List className={styles.ingredientsList} placeholder="Add all the equipment you'll need">
-								{recipe.equipment.map((equipment, i) => (
-									<EquipmentLi item={equipment} index={i} onClick={() => this.remove(i, "equipment")} />
-								))}
-							</List>
-						</div>
-					}
-					{	
-						this.state.currentStep === 3 &&
-						<div className={styles.createBrewStep}>
-							<span className={classnames(styles.formContainer, styles.twoThirds)}>
-								<form onSubmit={this.addStep}>					
-									<TextArea
-										onChange={(instructions) => this.updateCurrent({instructions})}  
-										className={styles.createBrewTextArea} placeholder={`Add you instructions for step ${this.state.recipe.steps.length + 1}`}
-										value={currentInput.instructions}
-									/>
-									<NumberInput label="Days" onChange={(days) => this.updateCurrent({days})} />
-									<NumberInput label="Hours" onChange={(hours) => this.updateCurrent({hours})} />
-									<NumberInput label="Minutes" onChange={(minutes) => this.updateCurrent({minutes})} />
-									<button>Add</button>
-								</form>
-							</span>
-							<List className={styles.ingredientsList} placeholder="Add each step, and the time it takes. Rome was built in 1 day, for example">
-								{recipe.steps.map((step, i) => (
-									<li className={styles.stepsListLiContainer} index={i} onClick={() => this.remove(i, "steps")}>
-										<p className={styles.stepsListLi}>
-											{
-												`Step ${i + 1} - ${step.instructions}` 
-											}
-										</p>
-									</li>
-								))}
-							</List>
-						</div>
-					}
+					<div className={classnames(styles.createBrewStep, styles.formContainer, styles[`step-${currentStep}`])}>
+						{	
+							currentStep === 0 &&
+							<form>
+								<TextInput 
+									onChange={(name) => this.updateBasic({name})}  
+									className={styles.createBrewInput} 
+									placeholder="Name"
+									value={basic.name}
+								/>
+								<TextInput 
+									onChange={(style) => this.updateBasic({style})} 
+									className={styles.createBrewInput} 
+									placeholder="Style"
+									value={basic.style}
+								/>
+								<TextArea 
+									onChange={(description) => this.updateBasic({description})} 
+									className={styles.createBrewTextArea} 
+									placeholder="Description"
+									value={basic.description}
+								/>
+							</form>
+						}
+						{	
+							currentStep === 1 &&
+							<form onSubmit={this.addIngredient}>
+								<TextInput 
+									onChange={(name) => this.updateCurrent({name})}  
+									className={styles.createBrewInput} placeholder="Ingredient"
+									value={currentInput.name}
+								/>
+								<TextInput 
+									onChange={(quantity) => this.updateCurrent({quantity})} 
+									className={styles.createBrewInput} placeholder="Quantity"
+									value={currentInput.quantity}
+								/>
+								<button>Add</button>
+							</form>
+						}
+						{	
+							currentStep === 2 &&
+							<form onSubmit={this.addEquipment}>
+								<TextInput 
+									onChange={(equipment) => this.updateCurrent({equipment})}  
+									className={styles.createBrewInput} placeholder="Item Name"
+									value={currentInput.equipment}
+								/>
+								<button>Add</button>
+							</form>
+						}
+						{	
+							currentStep === 3 &&
+							<form onSubmit={this.addStep}>					
+								<TextArea
+									onChange={(instructions) => this.updateCurrent({instructions})}  
+									className={styles.createBrewTextArea} placeholder={`Add you instructions for step ${this.state.recipe.steps.length + 1}`}
+									value={currentInput.instructions}
+								/>
+								<NumberInput label="Days" onChange={(days) => this.updateCurrent({days})} />
+								<NumberInput label="Hours" onChange={(hours) => this.updateCurrent({hours})} />
+								<NumberInput label="Minutes" onChange={(minutes) => this.updateCurrent({minutes})} />
+								<button>Add</button>
+							</form>
+						}
+						{
+							this.renderList(currentStep)
+						}
+					</div>
 
 					<PrevNext 
 						className={styles.prevNext} 
