@@ -1,18 +1,42 @@
+.textInput, .textArea {
+	background-color: transparent;
+	outline: none;
+	padding: 1em 2em;
+}
+
 .textInput {
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	border-bottom: 3px dashed whiteSmoke;
-	outline: none;
-	padding: 1em 2em;
-}
-
-.textInput:focus {
 	border-bottom: 3px dashed #13314D;
 }
 
+.textInput:focus, .number:focus {
+	border-bottom: 3px dashed #30B898;
+}
+
 .textArea {	
-	border: 3px dashed whiteSmoke;
+	border: 3px dashed #13314D;
+}
+
+.textArea:focus {
+	border: 3px dashed #30B898;
+	background-color: white;
+}
+
+.number {
+	background-color: transparent;
 	outline: none;
-	padding: 1em 2em;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 3px dashed #13314D;
+	width: 50px;
+	text-align: center;
+	margin: 10px 0;
+	padding-bottom: 5px;
+}
+
+.label {
+	padding-left: 10px;
 }

@@ -7,13 +7,21 @@ export default class TextInput extends Component {
 		
 		const {
 			className,
-			placeholder
+			onChange,
+			placeholder,
+			value
 		} = this.props;
+
+		const _onChange = (e) => {
+			return onChange(e.target.value);
+		}
 
 		return (
 			<textArea
+				onChange={_onChange}
 				className={classnames(className, styles.textArea)} 
 				placeholder={placeholder} 
+				value={value || ""}
 			/>
 		);
 	}

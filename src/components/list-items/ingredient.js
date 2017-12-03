@@ -10,10 +10,7 @@ export default ({className, onClick, ingredient, index}) => {
 		<li onClick={onClick} className={classnames(styles.item, className)}>
 			<p className={styles.text}>
 				<span className={styles.name}>
-					{name} - 
-				</span>
-				<span className={styles.quantity}>
-					{quantity}
+					{`${name} ${(quantity && quantity.length) ? ` - ${quantity}` : ""}`}
 				</span>
 			</p>
 			<button className={styles.clear}>
@@ -21,4 +18,4 @@ export default ({className, onClick, ingredient, index}) => {
 			</button>
 		</li>
 	)
-}
+};

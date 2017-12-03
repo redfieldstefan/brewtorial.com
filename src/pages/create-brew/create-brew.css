@@ -1,11 +1,34 @@
 .createBrewBody {
-	width: 60%;
+	width: 70%;
 	float: left;
+	min-height: 100vh;
+	height: 100%;
+	display: flex;
+	position: relative;
+}
+
+.createBrewStep {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.formContainer {
 	height: 100vh;
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	position: relative;
+}
+
+.fullWidth {
+	width: 100%;
+}
+
+.twoThirds {
+	width: 60%;
+}
+
+.halfWidth {
+	width: 50%;
 }
 
 .createBrewStep form {
@@ -25,15 +48,29 @@
 }
 
 .ingredientsList {
-	padding-top: 25px;
-}
-
-.ingredientsList li {
-	float: left;
-	padding-right: 10px;
+	flex: 40%;
 }
 
 .prevNext {
 	position: absolute;
 	bottom: 0;
+	background-color: #FFFFF0;
+	height: 4em;
+}
+
+.stepsList {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.stepsListLiContainer {
+	width: 50%;
+	float: left;
+	padding: 10px;
+}
+
+.stepsListLi {
+	padding: 10px;
+	margin: 0;
 }

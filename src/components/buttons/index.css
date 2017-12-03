@@ -1,6 +1,7 @@
 .prevNextContainer {
 	width: 100%;
 	position: relative;
+	background-color: white;
 }
 
 .prevNext {
