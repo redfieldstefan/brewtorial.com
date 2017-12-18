@@ -1,0 +1,22 @@
+.stepIcon {
+	width: 50%;
+	display: flex;
+	align-items: center;
+	flex-flow: column;
+	padding: 1em 0;
+}
+
+.stepIcon:hover {
+	cursor: pointer;
+}
+
+.placeholderIcon {
+	display: block;
+	height: 100px;
+	width: 100px;
+	background-color: #13314D;
+}
+
+.name {
+	padding-top: 10px;
+}

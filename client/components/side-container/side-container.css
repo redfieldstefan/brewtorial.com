@@ -1,0 +1,14 @@
+.sideContainer {
+	width: 30%;
+	float: right;
+	min-height: 100vh;
+	position: fixed;
+	margin-left: 70%;
+	background-color: #181A1C;
+	color: white;
+}
+
+.content {
+	display: block;
+	padding-top: 7em;
+}
