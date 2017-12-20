@@ -144,9 +144,28 @@ class CreateBrew extends Component {
 						<li className={styles.stepsListLiContainer} index={i} onClick={() => this.remove(i, "steps")}>
 							<p className={styles.stepsListLi}>
 								{
-									`Step ${i + 1} - ${step.instructions}` 
+									`Step ${i + 1}` 
 								}
 							</p>
+							<p>{step.instructions}</p>
+							{
+								step.days &&
+								<span>
+									{`${step.days} days`}
+								</span>
+							}
+							{
+								step.hours &&
+								<span>
+									{`${step.hours} hours`}
+								</span>
+							}
+							{
+								step.minutes &&
+								<span>
+									{`${step.minutes} minutes`}
+								</span>
+							}
 						</li>
 					))}
 				</List>
@@ -249,9 +268,9 @@ class CreateBrew extends Component {
 									className={styles.createBrewTextArea} placeholder={`Add you instructions for step ${this.state.recipe.steps.length + 1}`}
 									value={currentInput.instructions}
 								/>
-								<NumberInput label="Days" onChange={(days) => this.updateCurrent({days})} />
-								<NumberInput label="Hours" onChange={(hours) => this.updateCurrent({hours})} />
-								<NumberInput label="Minutes" onChange={(minutes) => this.updateCurrent({minutes})} />
+								<NumberInput value={currentInput.days} label="Days" onChange={(days) => this.updateCurrent({days})} />
+								<NumberInput value={currentInput.hours} label="Hours" onChange={(hours) => this.updateCurrent({hours})} />
+								<NumberInput value={currentInput.minutes} label="Minutes" onChange={(minutes) => this.updateCurrent({minutes})} />
 								<button>Add</button>
 							</form>
 						}
