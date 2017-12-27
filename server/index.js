@@ -7,10 +7,9 @@ const path = require("path");
 const app = express();
 const server = http.createServer(app);
 const recipes = express.Router();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3001;
 
 mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost/brewtorial_store");
-
 
 app.use(express.static(path.join(__dirname, "../build")));
 

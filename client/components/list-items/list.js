@@ -3,9 +3,6 @@ import classnames from "classnames";
 import styles from "./index.css";
 
 export default ({children, className, placeholder}) => {
-	console.log("children")
-	console.log(children)
-
 	return (
 		<div className={classnames(styles.list, className)}>
 			{

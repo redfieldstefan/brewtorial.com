@@ -6,6 +6,23 @@
 	padding: 1em 0;
 }
 
+.stepIcon:hover > .name {
+	color: #30B898;
+	text-decoration: underline;
+}
+
+.stepIcon.active:hover > .name {
+	color: tomato;
+	text-decoration: none;
+}
+
+.icon {
+	height: 100%;
+	height: 100px;
+	width: 100px;
+	padding: 10px;
+}
+
 .stepIcon:hover {
 	cursor: pointer;
 }
@@ -19,4 +36,8 @@
 
 .name {
 	padding-top: 10px;
+}
+
+.active {
+	color: tomato;
 }

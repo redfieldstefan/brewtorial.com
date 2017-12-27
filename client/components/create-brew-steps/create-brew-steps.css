@@ -1,5 +1,5 @@
 .createBrewSteps {
-	padding: 0 8em 0 2em;
+	padding: 0 4em;
 	display: flex;
 	flex-flow: row wrap;
 }
