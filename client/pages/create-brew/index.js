@@ -15,7 +15,17 @@ import TextArea from "../../components/form-components/text-area";
 import styles from "./create-brew.css";
 import urlify from "../../helpers/urlify";
 
-const steps = ["Description", "Ingredients", "Equipment", "Instructions"];
+import pintIcon from "../../images/pint-icon.png";
+import hopsIcon from "../../images/hops-icon.png";
+import potIcon from "../../images/pot-icon.png";
+import clipboardIcon from "../../images/clipboard-icon.png";
+
+const steps = [
+	{name: "Description", icon: pintIcon},
+	{name: "Ingredients", icon: hopsIcon},
+	{name: "Equipment", icon: potIcon},
+	{name: "Instructions", icon: clipboardIcon}
+];
 
 class CreateBrew extends Component {
 
@@ -25,7 +35,11 @@ class CreateBrew extends Component {
 			currentStep: 0,
 			currentInput: {},
 			recipe: {
-				basic: {},
+				basic: {
+					name: "",
+					style: "",
+					description: ""
+				},
 				ingredients: [],
 				equipment: [],
 				instructions: []
@@ -255,13 +269,13 @@ class CreateBrew extends Component {
 									onChange={(style) => this.updateBasic({style})}
 									className={styles.createBrewInput}
 									placeholder="Style"
-									value={recipe.basic.style}
+									value={recipe.basic.style || ""}
 								/>
 								<TextArea
 									onChange={(description) => this.updateBasic({description})}
 									className={styles.createBrewTextArea}
 									placeholder="Description"
-									value={recipe.basic.description}
+									value={recipe.basic.description || ""}
 								/>
 							</form>
 						}
@@ -322,7 +336,9 @@ class CreateBrew extends Component {
 				<SideContainer>
 					<CreateBrewSteps>
 						{
-							steps.map((step, i) => <StepIcon name={step} index={i} onClick={this.changeStep} />)
+							steps.map((step, i) => (
+								<StepIcon active={currentStep === i} {...step} index={i} onClick={this.changeStep} />
+							))
 						}
 					</CreateBrewSteps>
 				</SideContainer>

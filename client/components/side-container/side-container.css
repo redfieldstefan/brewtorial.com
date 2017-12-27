@@ -6,9 +6,11 @@
 	margin-left: 70%;
 	background-color: #181A1C;
 	color: white;
+  display: flex;
+  align-items: center;
 }
 
 .content {
-	display: block;
-	padding-top: 7em;
+  display: flex;
+  justify-content: center;
 }
